@@ -3,7 +3,10 @@ const mongoose = require('mongoose');
 const connect = async () => {
     return new Promise((resolve, reject) => {
         try {
-            mongoose.connect('mongodb://localhost/apex', { useNewUrlParser: true });
+            mongoose.connect('mongodb://mongo/apex', {
+                useNewUrlParser: true,
+                useCreateIndex: true
+            });
             const db = mongoose.connection;
 
             db.on('error', console.error.bind(console, 'connection error:'));
