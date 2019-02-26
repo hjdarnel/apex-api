@@ -10,7 +10,7 @@ const player = new Schema({
     matches: [{ type: Schema.Types.ObjectId, ref: 'Match' }]
 });
 
-const model = mongoose.model('Player', player);
+const model = mongoose.models.Player || mongoose.model('Player', player);
 
 const getByDiscordId = discordId => {
     const player = model.findOne({ discordId });

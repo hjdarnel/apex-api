@@ -12,7 +12,7 @@ const match = new Schema({
     image: String
 });
 
-const model = mongoose.model('Match', match);
+const model = mongoose.models.Match || mongoose.model('Match', match);
 
 const save = match => {
     let aMatch = new model(match);
