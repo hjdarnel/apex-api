@@ -1,9 +1,15 @@
 const Player = require('../players/model');
 
-const get = async (req, res) => {
+const getKills = async (req, res) => {
     const count = req.params.count;
     if (!count) return;
     return Player.topKills(count);
 };
 
-module.exports = { get };
+const getWins = async (req, res) => {
+    const count = req.params.count;
+    if (!count) return;
+    return Player.topWins(count);
+};
+
+module.exports = { getKills, getWins };

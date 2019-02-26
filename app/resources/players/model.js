@@ -103,4 +103,14 @@ const topKills = async count => {
         .slice(0, count);
 };
 
-module.exports = { save, update, model, get, getByDiscordId, getAll, topKills };
+const topWins = async count => {
+    const players = await model
+        .find({})
+        .sort('-wins')
+        .populate('matches')
+        .exec();
+
+    return players.slice(0, count);
+};
+
+module.exports = { save, update, model, get, getByDiscordId, getAll, topKills, topWins };

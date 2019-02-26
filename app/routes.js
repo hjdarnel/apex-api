@@ -13,7 +13,10 @@ const {
     getAll: getAllPlayers
 } = require('./resources/players/controller');
 
-const { get: getLeaderboard } = require('./resources/leaderboard/controller');
+const {
+    getKills: getKillLeaderboard,
+    getWins: getWinLeaderboard
+} = require('./resources/leaderboard/controller');
 
 const health = (req, res) => 'OK';
 const notfound = (req, res) => send(res, 404, 'Route not found');
@@ -29,7 +32,8 @@ const routes = router(
     get('/player', getAllPlayers),
     post('/player', recordPlayer),
     // leaderboard
-    get('/leaderboard/:count', getLeaderboard),
+    get('/leaderboard/kills/:count', getKillLeaderboard),
+    get('/leaderboard/wins/:count', getWinLeaderboard),
     // default to 404
     get('/*', notfound),
     post('/*', notfound)
