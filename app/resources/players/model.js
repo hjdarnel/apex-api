@@ -3,8 +3,8 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const player = new Schema({
-    name: { type: String, unique: true },
-    discordId: { type: String, unique: true },
+    name: { type: String, required: true, unique: true },
+    discordId: { type: String, required: true, unique: true },
     wins: { type: Number, default: 0 },
     kills: { type: Number, default: 0 },
     matches: [{ type: Schema.Types.ObjectId, ref: 'Match' }]

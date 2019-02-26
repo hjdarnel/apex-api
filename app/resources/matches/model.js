@@ -5,8 +5,8 @@ const match = new Schema({
     created: { type: Date, default: Date.now },
     players: [
         {
-            playerId: { type: Schema.Types.ObjectId, ref: 'Player' },
-            kills: Number
+            playerId: { type: Schema.Types.ObjectId, ref: 'Player', required: true },
+            kills: { type: Number, default: 0 }
         }
     ],
     image: String
