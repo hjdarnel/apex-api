@@ -23,4 +23,8 @@ const findOne = async id => {
     return await model.findById(id);
 };
 
-module.exports = { save, model, findOne };
+const getAll = async () => {
+    return await model.find({});
+};
+
+module.exports = { save, model, findOne, getAll };

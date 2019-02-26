@@ -1,8 +1,17 @@
 const { router, get, post } = require('microrouter');
 const { send } = require('micro');
 
-const { post: recordMatch, get: getMatch } = require('./resources/matches/controller');
-const { post: recordPlayer, get: getPlayer } = require('./resources/players/controller');
+const {
+    post: recordMatch,
+    get: getMatch,
+    getAll: getAllMatches
+} = require('./resources/matches/controller');
+
+const {
+    post: recordPlayer,
+    get: getPlayer,
+    getAll: getAllPlayers
+} = require('./resources/players/controller');
 
 const health = (req, res) => 'OK';
 const notfound = (req, res) => send(res, 404, 'Route not found');
@@ -11,9 +20,11 @@ const routes = router(
     get('/_health', health),
     // match
     get('/match/:id', getMatch),
+    get('/match', getAllMatches),
     post('/match', recordMatch),
     // players
     get('/player/:id', getPlayer),
+    get('/player', getAllPlayers),
     post('/player', recordPlayer),
     // default to 404
     get('/*', notfound),

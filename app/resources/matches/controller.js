@@ -8,6 +8,10 @@ const get = async (req, res) => {
     return await Model.findOne(matchId);
 };
 
+const getAll = async (req, res) => {
+    return await Model.getAll();
+};
+
 const post = async (req, res) => {
     const match = await json(req);
 
@@ -16,4 +20,4 @@ const post = async (req, res) => {
     return saved;
 };
 
-module.exports = { post, get };
+module.exports = { post, get, getAll };

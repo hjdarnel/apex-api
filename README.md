@@ -56,7 +56,7 @@ services:
         matches: [ObjectId]
     }
 
-    interface Player {
+    interface Match {
         created: Date
         players: [KillRecord]
         image: String

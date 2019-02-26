@@ -7,9 +7,13 @@ const get = async (req, res) => {
     return await Model.get(playerId);
 };
 
+const getAll = async (req, res) => {
+    return await Model.getAll();
+};
+
 const post = async (req, res) => {
     const player = await json(req);
     return Model.save(player);
 };
 
-module.exports = { post, get };
+module.exports = { post, get, getAll };
