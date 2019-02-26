@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const _ = require('lodash');
 
 const Schema = mongoose.Schema;
 
@@ -35,11 +36,71 @@ const update = async match => {
 };
 
 const get = async id => {
-    return await model.findById(id);
+    const player = await model
+        .findById(id)
+        .populate('matches')
+        .exec();
+
+    player.kills = 0;
+    player.matches.map(match => {
+        match.players.map(record => {
+            if (record.playerId.toString() === player._id.toString()) {
+                player.kills = player.kills + record.kills;
+            }
+        });
+    });
+
+    player.wins = player.matches.length;
+    player.save();
+    return player;
 };
 
 const getAll = async () => {
-    return await model.find({});
+    const players = await model
+        .find({})
+        .populate('matches')
+        .exec();
+
+    players.map(player => {
+        player.kills = 0;
+        player.matches.map(match => {
+            match.players.map(record => {
+                if (record.playerId.toString() === player._id.toString()) {
+                    player.kills = player.kills + record.kills;
+                }
+            });
+        });
+        player.wins = player.matches.length;
+
+        player.save();
+    });
+
+    return players;
 };
 
-module.exports = { save, update, model, get, getByDiscordId, getAll };
+const topKills = async count => {
+    const players = await model
+        .find({})
+        .populate('matches')
+        .exec();
+
+    players.map(player => {
+        player.kills = 0;
+        player.matches.map(match => {
+            match.players.map(record => {
+                if (record.playerId.toString() === player._id.toString()) {
+                    player.kills = player.kills + record.kills;
+                }
+            });
+        });
+        player.wins = player.matches.length;
+
+        player.save();
+    });
+
+    return _.sortBy(players, 'kills')
+        .reverse()
+        .slice(0, count);
+};
+
+module.exports = { save, update, model, get, getByDiscordId, getAll, topKills };
