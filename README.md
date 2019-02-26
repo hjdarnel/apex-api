@@ -43,10 +43,16 @@ services:
 
     GET /_health => "OK" // health check route
 
-    GET /player/:id => Player[]
-    POST /player  |PlayerCreateRequest| => Player
-    GET /match/:id => Match[]
-    POST /match  |MatchCreateRequest| => Match
+    GET /player/:id => Player[]                   // get player by id
+    GET /player => Player[]                       // get all players
+    POST /player  |PlayerCreateRequest| => Player // create player
+
+    GET /match/:id => Match[]                     // get match by id
+    GET /match => Match[]                         // get all matches
+    POST /match  |MatchCreateRequest| => Match    // create match
+
+    GET /leaderboard/wins/:count => Player[]           // get top count wins
+    GET /leaderboard/kills/:count => Player[]           // get top count kills
 
     interface Player {
         name: String
