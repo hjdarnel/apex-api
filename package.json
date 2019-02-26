@@ -4,7 +4,8 @@
   "description": "A backend for a Discord bot. Records wins and kills.",
   "main": "app/app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 0",
+    "test": "npm run lint",
+    "lint": "eslint app/*.js",
     "start": "micro",
     "dev": "micro-dev"
   },
@@ -22,5 +23,14 @@
     "eslint-plugin-prettier": "3.0.1",
     "micro-dev": "3.0.0",
     "prettier": "1.16.4"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hjdarnel/apex-api.git"
+  },
+  "keywords": ["node", "mongoose", "crud"],
+  "bugs": {
+    "url": "https://github.com/hjdarnel/apex-api/issues"
+  },
+  "homepage": "https://github.com/hjdarnel/apex-api#readme"
 }

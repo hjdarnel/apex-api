@@ -10,6 +10,7 @@ services:
 
 install:
   - npm ci .
+  - npm run test
 
 script:
   - if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then travis_retry docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
