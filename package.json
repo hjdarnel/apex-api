@@ -14,8 +14,8 @@
   "dependencies": {
     "micro": "9.3.3",
     "microrouter": "3.1.3",
-    "mongodb": "3.1.13",
-    "mongoose": "5.4.15"
+    "mongoose": "5.4.15",
+    "nodemon": "1.18.10"
   },
   "devDependencies": {
     "eslint": "5.14.1",
@@ -28,7 +28,11 @@
     "type": "git",
     "url": "git+https://github.com/hjdarnel/apex-api.git"
   },
-  "keywords": ["node", "mongoose", "crud"],
+  "keywords": [
+    "node",
+    "mongoose",
+    "crud"
+  ],
   "bugs": {
     "url": "https://github.com/hjdarnel/apex-api/issues"
   },
