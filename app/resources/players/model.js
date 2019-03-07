@@ -23,12 +23,24 @@ const save = player => {
     return aPlayer.save();
 };
 
-const update = async match => {
-    match.players.map(async player => {
-        const stored = await model.findById(player.playerId);
-        stored.wins = stored.wins + 1;
-        stored.kills = stored.kills + player.kills;
-        stored.matches.push(match._id);
+const update = async (match, oldMatch) => {
+    match.players.map(async matchPlayer => {
+        const stored = await model.findById(matchPlayer.playerId);
+        if (!oldMatch || !stored.matches.some(matchId => matchId.toString() === oldMatch._id)) {
+            stored.wins = stored.wins + 1;
+            stored.kills = stored.kills + matchPlayer.kills;
+            stored.matches.push(match._id);
+        } else if (stored.matches.some(matchId => matchId.toString() === oldMatch._id)) {
+            let oldKillcount;
+
+            oldMatch.players.map(player => {
+                if (player.playerId.toString() === stored._id.toString()) {
+                    oldKillcount = player.kills;
+                }
+            });
+
+            stored.kills = stored.kills - matchPlayer.kills + oldKillcount;
+        }
         stored.save();
     });
 

@@ -27,4 +27,8 @@ const getAll = async () => {
     return await model.find({});
 };
 
-module.exports = { save, model, findOne, getAll };
+const update = async match => {
+    return await model.findOneAndUpdate({ _id: match._id }, match);
+};
+
+module.exports = { save, model, findOne, getAll, update };

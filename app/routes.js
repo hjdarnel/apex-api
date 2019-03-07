@@ -1,10 +1,11 @@
-const { router, get, post } = require('microrouter');
+const { router, get, post, put } = require('microrouter');
 const { send } = require('micro');
 
 const {
     post: recordMatch,
     get: getMatch,
-    getAll: getAllMatches
+    getAll: getAllMatches,
+    put: updateMatch
 } = require('./resources/matches/controller');
 
 const {
@@ -27,6 +28,7 @@ const routes = router(
     get('/match/:id', getMatch),
     get('/match', getAllMatches),
     post('/match', recordMatch),
+    put('/match', updateMatch),
     // players
     get('/player/:id', getPlayer),
     get('/player', getAllPlayers),
