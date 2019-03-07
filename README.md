@@ -1,4 +1,4 @@
-# apex-api 💥🔫🎮 [![Build Status](https://travis-ci.com/hjdarnel/apex-api.svg?branch=master)](https://travis-ci.com/hjdarnel/apex-api)
+# apex-api 💥🔫🎮 [![CircleCI](https://circleci.com/gh/hjdarnel/apex-api.svg?style=svg)](https://circleci.com/gh/hjdarnel/apex-api)
 A server serving requests to store records in Mongo using [Mongoose](https://mongoosejs.com/docs/guide.html) for schema management.
 
 Uses [micro](https://github.com/zeit/micro), [micro-dev](https://github.com/zeit/micro-dev), [micro-router](https://github.com/pedronauck/micro-router) for routing, [ESLint](https://github.com/eslint/eslint) for code linting, and [Prettier](https://github.com/prettier/prettier) for code cleanup.
