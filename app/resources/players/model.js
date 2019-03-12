@@ -24,8 +24,13 @@ const save = player => {
 };
 
 const update = async (match, oldMatch) => {
-    match.players.map(async matchPlayer => {
+    return match.players.map(async matchPlayer => {
         const stored = await model.findById(matchPlayer.playerId);
+
+        if (!stored) {
+            return;
+        }
+
         if (!oldMatch || !stored.matches.some(matchId => matchId.toString() === oldMatch._id)) {
             stored.wins = stored.wins + 1;
             stored.kills = stored.kills + matchPlayer.kills;
@@ -43,8 +48,6 @@ const update = async (match, oldMatch) => {
         }
         stored.save();
     });
-
-    return;
 };
 
 const get = async id => {
