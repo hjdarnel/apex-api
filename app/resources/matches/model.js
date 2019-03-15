@@ -6,7 +6,8 @@ const match = new Schema({
     players: [
         {
             playerId: { type: Schema.Types.ObjectId, ref: 'Player', required: true },
-            kills: { type: Number, default: 0 }
+            kills: { type: Number, min: 0, default: 0 },
+            damage: { type: Number, min: 0, default: 0 }
         }
     ],
     image: String
