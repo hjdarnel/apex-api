@@ -91,6 +91,6 @@ services:
 
 ## 👓 deploying
 
-This project is built by [Travis CI](https://travis-ci.com/hjdarnel/apex-api) on every branch push. This updates the [Docker Hub repository](https://hub.docker.com/r/hjdarnel/apex-api) with an updated image, tagged with the branch name.
+This project is built by [CircleCI](https://circleci.com/gh/hjdarnel/apex-api) on every branch push. This updates the [Docker Hub repository](https://hub.docker.com/r/hjdarnel/apex-api) with an updated image, tagged with the branch name.
 
 It would be sufficient to use a Docker Compose setup to run this, since it's not mission critical. Consider using Docker's [healthcheck](https://docs.docker.com/compose/compose-file/compose-file-v2/#healthcheck) and a `restart` policy to keep the server running.
